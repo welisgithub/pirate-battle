@@ -4,6 +4,8 @@ import titleUrl from '../../assets/png/default/ui/menu/title_pirate_battle.png';
 import shipUrl from '../../assets/png/default/ships/ship_14.png';
 import logoUrl from '../../assets/logo_jungle_gaming.svg';
 import { OptionsMenu } from './OptionsMenu';
+import { RankingModal } from './RankingModal';
+import { HistoryModal } from './HistoryModal';
 
 interface MainMenuProps {
   onPlay: () => void;
@@ -11,13 +13,13 @@ interface MainMenuProps {
 
 export function MainMenu({ onPlay }: MainMenuProps) {
   const playButton = useRef<HTMLButtonElement>(null);
-  const [showOptions, setShowOptions] = useState(false);
+  const [activeModal, setActiveModal] = useState<'none' | 'options' | 'ranking' | 'history'>('none');
 
   useEffect(() => {
-    if (!showOptions) {
+    if (activeModal === 'none') {
       playButton.current?.focus();
     }
-  }, [showOptions]);
+  }, [activeModal]);
 
   return (
     <main className="menu-screen">
@@ -32,21 +34,36 @@ export function MainMenu({ onPlay }: MainMenuProps) {
         </h1>
         <p className="eyebrow">Set sail. Take command.</p>
         <img className="menu-ship" src={shipUrl} alt="" />
-        <p className="menu-description">Defend the waters and defeat enemy ships.</p>
 
         <button ref={playButton} className="play-button" onClick={onPlay}>
           Play
         </button>
 
-        <button
-          className="secondary-button options-nav-btn"
-          onClick={() => setShowOptions(true)}
-        >
-          Options
-        </button>
+        <div className="menu-nav-grid">
+          <button
+            className="secondary-button"
+            onClick={() => setActiveModal('ranking')}
+          >
+            Ranking
+          </button>
+          <button
+            className="secondary-button"
+            onClick={() => setActiveModal('history')}
+          >
+            Match History
+          </button>
+          <button
+            className="secondary-button full-width"
+            onClick={() => setActiveModal('options')}
+          >
+            Options
+          </button>
+        </div>
       </section>
 
-      {showOptions && <OptionsMenu onClose={() => setShowOptions(false)} />}
+      {activeModal === 'options' && <OptionsMenu onClose={() => setActiveModal('none')} />}
+      {activeModal === 'ranking' && <RankingModal onClose={() => setActiveModal('none')} />}
+      {activeModal === 'history' && <HistoryModal onClose={() => setActiveModal('none')} />}
 
       <footer className="menu-footer">A single-player naval shooter</footer>
     </main>

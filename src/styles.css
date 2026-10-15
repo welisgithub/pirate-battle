@@ -316,3 +316,147 @@ h1, p { margin: 0; }
   text-align: center;
   font-weight: 600;
 }
+
+/* Grades do Menu Principal */
+.menu-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: min(100%, 280px);
+  margin-top: 6px;
+}
+
+.menu-nav-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+/* Modais de Dados (Ranking e Histórico) */
+.data-modal-box {
+  width: min(100%, 560px);
+  text-align: left;
+}
+
+.data-modal-box h2 {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.data-modal-box .eyebrow {
+  text-align: center;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.scenario-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: #0d2633;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #c8a56533;
+  margin-bottom: 14px;
+  font-size: 0.75rem;
+}
+
+.scenario-bar select {
+  background: #193f54;
+  color: #fff;
+  border: 1px solid #c8a565;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 0.75rem;
+}
+
+.small-button {
+  background: #254454;
+  color: #ffe9b3;
+  border: 1px solid #c8a565;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.small-button:hover:not(:disabled) { background: #355d73; }
+.small-button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.data-table th, .data-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ffffff1a;
+  text-align: left;
+}
+
+.data-table th {
+  color: #eccc8d;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.data-table .rank-col {
+  width: 40px;
+  font-weight: 800;
+  color: #f1c40f;
+}
+
+.data-table .score-col {
+  font-weight: 700;
+  color: #f1c40f;
+}
+
+.data-table .current-player {
+  background: #ffffff12;
+  font-weight: 700;
+}
+
+.data-status {
+  text-align: center;
+  padding: 24px 0;
+  color: #c4d5d8;
+  font-size: 0.85rem;
+}
+
+.data-error {
+  text-align: center;
+  padding: 16px 0;
+  color: #e74c3c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #c4d5d8;
+  margin-top: 8px;
+}
+
+.save-status {
+  min-height: 28px;
+  font-size: 0.8rem;
+  margin-bottom: 14px;
+}
+
+.success-txt {
+  color: #2ecc71;
+  font-weight: 600;
+}
+
+.retry-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #e74c3c;
+}
