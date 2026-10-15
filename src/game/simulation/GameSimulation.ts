@@ -62,9 +62,10 @@ export class GameSimulation {
   private nextProjectileId = 1;
   private score = 0;
 
-  // Tempo de partida
-  private sessionDuration = 90; // 90 segundos por padrão
-  private timeRemaining = 90;
+  // Tempo e spawn configuráveis pelas opções
+  private sessionDuration: number;
+  private spawnInterval: number;
+  private timeRemaining: number;
   private timePlayed = 0;
   private isPaused = false;
   private isGameOver = false;
@@ -74,9 +75,7 @@ export class GameSimulation {
   private frontCooldown = 0;
   private leftCooldown = 0;
   private rightCooldown = 0;
-
-  private spawnTimer = 1.0;
-  private readonly SPAWN_INTERVAL = 3.2;
+  private spawnTimer: number;
 
   private readonly FRONT_COOLDOWN_TIME = 0.35;
   private readonly SIDE_COOLDOWN_TIME = 0.75;
@@ -90,9 +89,12 @@ export class GameSimulation {
     maxY: arenaConfig.island.y + 3 * arenaConfig.tileSize,
   };
 
-  constructor(sessionDuration = 90) {
+  // Único construtor da classe
+  constructor(sessionDuration = 90, spawnInterval = 3.2) {
     this.sessionDuration = sessionDuration;
+    this.spawnInterval = spawnInterval;
     this.timeRemaining = sessionDuration;
+    this.spawnTimer = 1.0;
     this.player = this.createInitialPlayer();
   }
 
@@ -220,7 +222,6 @@ export class GameSimulation {
         this.rightCooldown = this.SIDE_COOLDOWN_TIME;
       }
     } else {
-      // Jogador afundou
       this.isGameOver = true;
       this.endReason = 'player_dead';
       return;
@@ -235,7 +236,7 @@ export class GameSimulation {
     this.spawnTimer -= dt;
     if (this.spawnTimer <= 0 && this.enemies.length < 8) {
       this.spawnEnemy();
-      this.spawnTimer = this.SPAWN_INTERVAL;
+      this.spawnTimer = this.spawnInterval;
     }
   }
 

@@ -258,3 +258,61 @@ h1, p { margin: 0; }
 .highlight-button:hover {
   background: #c89c56;
 }
+
+/* Opções */
+.options-nav-btn {
+  width: min(100%, 256px);
+  margin-bottom: 8px;
+}
+
+.options-box {
+  width: min(100%, 480px);
+  text-align: left;
+}
+
+.options-box h2 {
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.options-box .eyebrow {
+  text-align: center;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.options-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.option-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff1d0;
+}
+
+.field-hint {
+  font-size: 0.75rem;
+  color: #c4d5d8;
+}
+
+.option-field input[type="range"] {
+  width: 100%;
+  accent-color: #f1c40f;
+  cursor: pointer;
+}
+
+.success-msg {
+  color: #2ecc71;
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: 600;
+}

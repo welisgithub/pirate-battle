@@ -5,6 +5,7 @@ import { arenaConfig } from './config';
 import { ArenaWorld } from './createArenaScene';
 import { InputManager } from './input/InputManager';
 import { GameSimulation, type GameSnapshot } from './simulation/GameSimulation';
+import { loadGameOptions, type GameOptions } from './options';
 
 export interface ArenaController {
   togglePause: () => void;
@@ -20,9 +21,10 @@ interface ArenaCallbacks {
 }
 
 export function mountArena(host: HTMLDivElement, callbacks: ArenaCallbacks): () => void {
+  const options = loadGameOptions();
   const app = new Application();
   const input = new InputManager();
-  const simulation = new GameSimulation();
+  const simulation = new GameSimulation(options.sessionDuration, options.spawnInterval);
 
   let disposed = false;
   let initialized = false;
